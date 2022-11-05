@@ -37,21 +37,21 @@ void main()
     int heap[10], no, i, j, c, root, temp, k;
 
     printf("\n Enter no of elements :");
-    scanf("%d", &no);                         --------------- 1
-    printf("\n Enter the element : ");    --------------- 1
-    for (i = 0; i < no; i++)                  ----------------- n
-       scanf("%d", &heap[i]);             ----------------- 1
-    for (i = 1; i < no; i++)                  ----------------- n
+    scanf("%d", &no);
+    printf("\n Enter the element : ");
+    for (i = 0; i < no; i++)
+       scanf("%d", &heap[i]);
+    for (i = 1; i < no; i++)
     {
-        //c = i;
-        for (c = i; c > 0; c=root)           ----------------- logn.n because root=(c-1)/2
+
+        for (c = i; c > 0; c=root)
         {
-            root = (c - 1) / 2;                ------------ 1.logn.n
-            if (heap[root] < heap[c])   /* to create MAX heap array */  ------ 1.logn.n
+            root = (c - 1) / 2;
+            if (heap[root] < heap[c])   /* to create MAX heap array */
             {
-                temp = heap[root]; ------- 1.logn.n
-                heap[root] = heap[c]; ------- 1.logn.n
-                heap[c] = temp; ------- 1.logn.n
+                temp = heap[root];
+                heap[root] = heap[c];
+                heap[c] = temp;
             }
         }
     }
