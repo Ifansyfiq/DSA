@@ -30,17 +30,9 @@ void main()
 
 void heap_sort(long heap[], long no)
 {
-#include <stdio.h>
+    int  i, j, c, root, temp, k;
 
-void main()
-{
-    int heap[10], no, i, j, c, root, temp, k;
-
-    printf("\n Enter no of elements :");
-    scanf("%d", &no);
-    printf("\n Enter the element : ");
-    for (i = 0; i < no; i++)
-       scanf("%d", &heap[i]);
+    clock_t start = clock();
     for (i = 1; i < no; i++)
     {
 
@@ -52,9 +44,12 @@ void main()
                 temp = heap[root];
                 heap[root] = heap[c];
                 heap[c] = temp;
+                tot_comp++;
             }
+            tot_step++;
         }
     }
-
+    clock_t end = clock();
+        cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
 }
 
