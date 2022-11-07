@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
 void heap_sort(long [], long);
 void display(long [], long);
@@ -71,10 +72,10 @@ void heap_sort(long heap[], long n)
                 temp = heap[root];
                 heap[root] = heap[c];
                 heap[c] = temp;
-                tot_comp++;
+                //tot_comp++;
             }
             root = c;
-            tot_step++;
+            //tot_step++;
         } while (c < k);
     }
 
