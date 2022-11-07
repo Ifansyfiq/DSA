@@ -17,7 +17,10 @@ void main()
         tot_comp=0,tot_step=0;
         for(int j=0; j<n; j++)
             array[j]=rand()%n;
+        start = clock();
         heap_sort(array, n);
+         end = clock();
+    cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
         printf("\n\nSECTION : %d", i);
         printf("\nSIZE : %d", n);
         printf("\nTIME: %.4f seconds", cpu_time_used);
@@ -28,12 +31,12 @@ void main()
     }
 }
 
-void heap_sort(long heap[], long no)
+void heap_sort(long heap[], long n)
 {
-    int  i, j, c, root, temp, k;
+    int  i, c, root, temp, k;
 
-    clock_t start = clock();
-    for (i = 1; i < no; i++)
+
+    for (i = 1; i < n; i++)
     {
 
         for (c = i; c > 0; c=root)
@@ -49,34 +52,31 @@ void heap_sort(long heap[], long no)
 
         }
     }
-    for (j = no - 1; j >= 0; j--)
+    for (k = n - 1; k >= 0; k--)
     {
         temp = heap[0];
         /* swap max element with rightmost leaf element */
-        heap[0] = heap[j];
-        heap[j] = temp;
+        heap[0] = heap[k];
+        heap[k] = temp;
 
         root = 0;
         do
         {
             c = 2 * root + 1;    /* left node of root element */
-            if ((heap[c] < heap[c + 1]) && c < j-1)
+            if ((heap[c] < heap[c + 1]) && c < k-1)
                 c++;
             /* again rearrange to max heap array */
-            if (heap[root]<heap[c] && c < j)
+            if (heap[root]<heap[c] && c < k)
             {
                 temp = heap[root];
                 heap[root] = heap[c];
                 heap[c] = temp;
-                //tot_comp++;
+                tot_comp++;
             }
             root = c;
-            //tot_step++;
-        } while (c < j);
-
+            tot_step++;
+        } while (c < k);
     }
-    clock_t end = clock();
-    cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
 
 }
 

@@ -16,7 +16,10 @@ int main()
         tot_comp=0,tot_step=0;
         for(int j=0; j<n; j++)
             array[j]=rand()%n;
+             start = clock();
         bubble_sort(array, n);
+          end = clock();
+        cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
         printf("\n\nSECTION : %d", i);
         printf("\nSIZE : %d", n);
         printf("\nTIME: %.2f seconds", cpu_time_used);
@@ -31,7 +34,7 @@ int main()
 void bubble_sort(long list[], long n)
 {
 	int  temp, i;
-	clock_t start = clock();
+
 	while (n>1)
 	{
 		n--;
@@ -47,7 +50,6 @@ void bubble_sort(long list[], long n)
 			tot_step++;
 		}
         }
-        clock_t end = clock();
-        cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
+
 }
 
