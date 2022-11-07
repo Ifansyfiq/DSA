@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-int bubble_sort(long [], long);
+void bubble_sort(long [], long);
 clock_t start, end;
 double cpu_time_used;
 int tot_comp,tot_step;
@@ -28,7 +28,7 @@ int main()
   return 0;
 }
 
-int bubble_sort(long list[], long n)
+void bubble_sort(long list[], long n)
 {
 	int  temp, i;
 	clock_t start = clock();

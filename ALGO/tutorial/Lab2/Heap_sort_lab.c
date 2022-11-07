@@ -44,12 +44,39 @@ void heap_sort(long heap[], long no)
                 temp = heap[root];
                 heap[root] = heap[c];
                 heap[c] = temp;
-                tot_comp++;
+
             }
-            tot_step++;
+
         }
     }
+    for (j = no - 1; j >= 0; j--)
+    {
+        temp = heap[0];
+        /* swap max element with rightmost leaf element */
+        heap[0] = heap[j];
+        heap[j] = temp;
+
+        root = 0;
+        do
+        {
+            c = 2 * root + 1;    /* left node of root element */
+            if ((heap[c] < heap[c + 1]) && c < j-1)
+                c++;
+            /* again rearrange to max heap array */
+            if (heap[root]<heap[c] && c < j)
+            {
+                temp = heap[root];
+                heap[root] = heap[c];
+                heap[c] = temp;
+                //tot_comp++;
+            }
+            root = c;
+            //tot_step++;
+        } while (c < j);
+
+    }
     clock_t end = clock();
-        cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
+    cpu_time_used = (double)(end-start)/CLOCKS_PER_SEC;
+
 }
 
